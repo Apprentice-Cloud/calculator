@@ -47,7 +47,13 @@ input[type=button] {
 	font-weight: 700;
 	color: #5E5858;
 	cursor: pointer;
+	transition: all .2s ease-out;
 	
+}
+
+input[type=button]:hover{
+	background: #c1c2c4;
+	transform: scale(.9);
 }
 input[type=text] {
 	width: 270px;
@@ -67,6 +73,10 @@ input[type=text] {
 }
 .red {
 	background: #FF0509 !important;
-	color: #ffffff !important;
-	
+	color: #ffffff !important
+}
+
+.center{
+	display: flex;
+	justify-content: center;
 }
