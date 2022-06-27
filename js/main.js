@@ -1,33 +1,54 @@
-// *** Write your code here***
-// let btns = document.querySelectorAll("input");
-// let clearDisplay = document.querySelector(".clear");
-// let secondNums;
+let display = document.querySelector('input[type="text"]');
+let displayResult = "";
 
-// let display = btns[0];
-// console.log(display);
+let btns = document.querySelectorAll('input[type="button"]');
 
-// // clearDisplay.addEventListener("click", clear());
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (e.target.value === "=") {
+      compute();
+    } else if (
+      e.target.value === "-" ||
+      e.target.value === "+" ||
+      e.target.value === "/" ||
+      e.target.value === "*"
+    ) {
+      chooseOperation(e.target.value);
+    } else if (e.target.value === "CE") {
+      deleteValue();
+    } else if (e.target.value === "C") {
+      clear();
+    } else {
+      appendNumber(e.target.value);
+    }
+  });
+});
 
-// btns.forEach((btn) => {
-//   if (btn.type === "button" && btn.value != "C" && btn.value != "=") {
-//     btn.addEventListener("click", () => {
-//       display.value += btn.value;
-//       console.log(display.value);
-//     });
-//   } else if (btn.value === "C") {
-//     btn.addEventListener("click", clear());
-//   }
-// });
+const clear = () => {
+  displayResult = "";
+  updateDisplay();
+};
 
-// function clear() {
-//   display.value = "";
-//   console.log(display.value);
-// }
+const deleteValue = () => {
+  displayResult = display.value.slice(0, -1);
+  updateDisplay();
+};
 
-// function delete(){
+const appendNumber = (number) => {
+  displayResult += number;
+  updateDisplay();
+};
 
-// }
+const chooseOperation = (operation) => {
+  displayResult += " " + operation + " ";
+  updateDisplay();
+};
 
-// function calcNumbers() {
+const compute = () => {
+  displayResult = eval(display.value);
+  updateDisplay();
+};
 
-// }
+const updateDisplay = () => {
+  display.value = displayResult;
+};
